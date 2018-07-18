@@ -1,0 +1,3 @@
+[submodule "inst/include/libsass"]
+	path = inst/include/libsass
+	url = https://github.com/sass/libsass
