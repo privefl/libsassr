@@ -6,14 +6,31 @@
 using namespace Rcpp;
 
 // sass_compile_string
-int sass_compile_string(std::string str);
-RcppExport SEXP _libsassr_sass_compile_string(SEXP strSEXP) {
+std::string sass_compile_string(std::string str, int output_style, int precision, bool source_comments, bool is_indented_syntax_src, bool source_map_contents, bool source_map_embed, bool omit_source_map_url);
+RcppExport SEXP _libsassr_sass_compile_string(SEXP strSEXP, SEXP output_styleSEXP, SEXP precisionSEXP, SEXP source_commentsSEXP, SEXP is_indented_syntax_srcSEXP, SEXP source_map_contentsSEXP, SEXP source_map_embedSEXP, SEXP omit_source_map_urlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type str(strSEXP);
-    rcpp_result_gen = Rcpp::wrap(sass_compile_string(str));
+    Rcpp::traits::input_parameter< int >::type output_style(output_styleSEXP);
+    Rcpp::traits::input_parameter< int >::type precision(precisionSEXP);
+    Rcpp::traits::input_parameter< bool >::type source_comments(source_commentsSEXP);
+    Rcpp::traits::input_parameter< bool >::type is_indented_syntax_src(is_indented_syntax_srcSEXP);
+    Rcpp::traits::input_parameter< bool >::type source_map_contents(source_map_contentsSEXP);
+    Rcpp::traits::input_parameter< bool >::type source_map_embed(source_map_embedSEXP);
+    Rcpp::traits::input_parameter< bool >::type omit_source_map_url(omit_source_map_urlSEXP);
+    rcpp_result_gen = Rcpp::wrap(sass_compile_string(str, output_style, precision, source_comments, is_indented_syntax_src, source_map_contents, source_map_embed, omit_source_map_url));
     return rcpp_result_gen;
+END_RCPP
+}
+// sass_compile_file
+void sass_compile_file(std::string filename);
+RcppExport SEXP _libsassr_sass_compile_file(SEXP filenameSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type filename(filenameSEXP);
+    sass_compile_file(filename);
+    return R_NilValue;
 END_RCPP
 }
 // version
@@ -28,7 +45,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_libsassr_sass_compile_string", (DL_FUNC) &_libsassr_sass_compile_string, 1},
+    {"_libsassr_sass_compile_string", (DL_FUNC) &_libsassr_sass_compile_string, 8},
+    {"_libsassr_sass_compile_file", (DL_FUNC) &_libsassr_sass_compile_file, 1},
     {"_libsassr_version", (DL_FUNC) &_libsassr_version, 0},
     {NULL, NULL, 0}
 };
