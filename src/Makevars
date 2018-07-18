@@ -1,1 +1,2 @@
 PKG_CPPFLAGS = -I../inst/include/libsass/include
+PKG_LIBS = -L../inst/include/libsass/lib${R_ARCH} -lsass
