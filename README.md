@@ -3,6 +3,7 @@
 An R package to wrap the LibSass C++ library.
 
 **This is in early stage development.**
+Seems like RStudio implemented it few days after me; **use [their version](https://github.com/rstudio/sassr)**.
 
 ## Installation
 
